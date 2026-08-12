@@ -142,6 +142,9 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .reveal{opacity:0;transform:translateY(26px);
   transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
+/* about — slide in from the side instead of the scroll-up reveal */
+.about .reveal{transform:translateX(-46px)}
+.about .reveal.in{transform:none}
 
 /* ===== animations ===== */
 @keyframes kenburns{from{transform:scale(1) translate3d(0,0,0)}
