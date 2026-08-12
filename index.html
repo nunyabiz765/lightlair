@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Light Lair — Alex Than Photography</title>
+<meta name="description" content="The Light Lair — street, nature &amp; still-life photography by Alex Than, Seattle.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" as="image" href="images/ll-01-red-maple.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=Caveat:wght@500;600&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+</head>
+<body class="home">
+<div class="page-fade"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images/ll-01-red-maple.jpg')"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <h1 class="wordmark">The Light Lair</h1>
+    <div class="signature">by Alex Than</div>
+    <div class="hero-rule"></div>
+    <p class="hero-tag">Streets, small things &amp; stray light<br>Seattle, Washington</p>
+    <a class="cta" href="#gallery">See the Photographs</a>
+  </div>
+  <a href="#gallery" class="scroll-cue" aria-label="Scroll to the gallery">&#9660;</a>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-head reveal">
+    <span class="eyebrow">The Photographs</span>
+    <h2>One stream, no highlight reel</h2>
+    <div class="head-rule"></div>
+  </div>
+  <nav class="filters" aria-label="Loose tags">
+    <button data-filter="all" class="active">Everything</button>
+    <button data-filter="streets">Streets</button>
+    <button data-filter="nature">Nature</button>
+    <button data-filter="details">Details</button>
+    <button data-filter="home">Home</button>
+  </nav>
+  <main class="grid" id="grid" aria-live="polite">
+    <!-- populated from assets/gallery.json by assets/gallery.js -->
+  </main>
+  <noscript><p class="nojs">This gallery needs JavaScript to load its manifest. The photographs live in <code>images/</code>.</p></noscript>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner reveal">
+    <span class="eyebrow">About</span>
+    <h2>Alex Than</h2>
+    <div class="head-rule centered"></div>
+    <!-- PLACEHOLDER COPY — Nick: edit freely, Alex hasn't approved any bio text yet -->
+    <p>Alex Than is a photographer in Seattle. He shoots what the day actually looked like &mdash; the bus at golden hour, a watch on the desk, the cat helping himself to dinner &mdash; and he isn&rsquo;t precious about a messy frame if there&rsquo;s something alive in it.</p>
+    <p class="about-note">[placeholder copy &mdash; swap in Alex&rsquo;s own words]</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="reveal">
+    <div class="foot-sig">Alex Than</div>
+    <div class="license">&copy; Alex Than &middot; The Light Lair. All photographs are the work of the artist.</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-prev" aria-label="Previous">&#8249;</button>
+  <figure class="lb-figure">
+    <img src="" alt="">
+    <figcaption class="lb-cap"></figcaption>
+  </figure>
+  <button class="lb-btn lb-next" aria-label="Next">&#8250;</button>
+  <div class="lb-count"></div>
+</div>
+
+<script src="assets/gallery.json.js?v=1"></script>
+<script src="assets/gallery.js?v=1"></script>
+<script>
+// Scroll-reveal for section heads / about / footer
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.18 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
