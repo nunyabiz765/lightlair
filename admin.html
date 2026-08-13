@@ -10,99 +10,95 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=Caveat:wght@500;600&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
 <link rel="stylesheet" href="assets/style.css?v=3">
 <style>
-  .studio-wrap{max-width:1080px;margin:0 auto;padding:22px 20px 80px}
+  .studio-wrap{max-width:1080px;margin:0 auto;padding:22px 20px 90px}
   .studio-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 0 18px}
-  .studio-top .brand{font-family:var(--mono);font-weight:300;letter-spacing:.14em;
-    font-size:18px;color:var(--ink)}
-  .studio-top .brand .sig{font-family:var(--hand);font-weight:600;color:var(--accent);
-    font-size:20px;margin-left:8px;letter-spacing:0}
+  .studio-top .brand{font-family:var(--mono);font-weight:300;letter-spacing:.14em;font-size:18px;color:var(--ink)}
+  .studio-top .brand .sig{font-family:var(--hand);font-weight:600;color:var(--accent);font-size:20px;margin-left:8px;letter-spacing:0}
   .studio-top .spacer{margin-left:auto}
-  .pill{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-    padding:5px 11px;border-radius:0;border:1px solid var(--line);color:var(--muted)}
-  .pill.demo{background:rgba(217,150,46,.14);border-color:rgba(217,150,46,.5);color:#8a5a12}
-  a.back{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;
-    border-bottom:1px dotted var(--line)}
-  a.back:hover{color:var(--accent)}
-  h1.studio-h{font-family:var(--mono);font-weight:300;letter-spacing:.04em;
-    font-size:clamp(24px,4.4vw,34px);margin:6px 0 4px}
+  .pill{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px;border-radius:0;border:1px solid var(--line);color:var(--muted)}
+  a.back,button.link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:0;background:none;cursor:pointer;border-bottom:1px dotted var(--line)}
+  a.back:hover,button.link:hover{color:var(--accent)}
+  h1.studio-h{font-family:var(--mono);font-weight:300;letter-spacing:.04em;font-size:clamp(24px,4.4vw,34px);margin:6px 0 4px}
   .studio-sub{color:var(--muted);margin:0 0 18px;max-width:640px;line-height:1.6}
-  .note{display:flex;gap:12px;align-items:flex-start;background:var(--panel);
-    border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0;
-    padding:13px 16px;margin:0 0 22px;color:#5a4a34;line-height:1.55;font-size:14.5px}
+  .note{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0;padding:13px 16px;margin:0 0 22px;color:#5a4a34;line-height:1.55;font-size:14.5px}
   .note b{color:var(--accent)}
-  /* dropzone */
-  .drop{display:block;position:relative;border:2px dashed #d8c9a8;border-radius:0;background:#fbf8f0;
-    padding:44px 24px;text-align:center;transition:border-color .18s,background .18s,transform .18s;
-    cursor:pointer}
+  .drop{display:block;position:relative;border:2px dashed #d8c9a8;border-radius:0;background:#fbf8f0;padding:44px 24px;text-align:center;transition:border-color .18s,background .18s,transform .18s;cursor:pointer}
   .drop:hover{border-color:var(--amber);background:#fdfaf2}
   .drop.drag{border-color:var(--accent);background:rgba(193,74,36,.05);transform:scale(1.005)}
-  .drop .icon{font-size:34px;line-height:1;filter:saturate(.9)}
-  .drop .big{font-family:var(--mono);font-weight:400;font-size:clamp(17px,2.6vw,21px);
-    margin:12px 0 4px;color:var(--ink)}
+  .drop .icon{font-size:34px;line-height:1}
+  .drop .big{font-family:var(--mono);font-weight:400;font-size:clamp(17px,2.6vw,21px);margin:12px 0 4px;color:var(--ink)}
   .drop .small{color:var(--muted);font-size:14px}
-  .drop .choose{display:inline-block;margin-top:16px;padding:11px 26px;border-radius:0;
-    background:var(--accent);color:#fdf8ef;font-weight:700;font-size:12px;letter-spacing:.12em;
-    text-transform:uppercase;box-shadow:0 8px 24px rgba(193,74,36,.24)}
+  .drop .choose{display:inline-block;margin-top:16px;padding:11px 26px;border-radius:0;background:var(--accent);color:#fdf8ef;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 8px 24px rgba(193,74,36,.24)}
   input[type=file]{display:none}
-  /* tray */
-  .tray-head{display:flex;align-items:center;gap:12px;margin:30px 0 14px}
-  .tray-head h2{font-family:var(--mono);font-weight:400;font-size:15px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--muted);margin:0}
+  .tray-head{display:flex;align-items:center;gap:12px;margin:30px 0 14px;flex-wrap:wrap}
+  .tray-head h2{font-family:var(--mono);font-weight:400;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
   .tray-head .count{font-family:var(--mono);color:var(--accent);font-size:13px}
   .tray-head .spacer{margin-left:auto}
-  .btn{font:inherit;cursor:pointer;border-radius:0;border:1px solid var(--line);
-    background:transparent;color:var(--muted);padding:9px 18px;font-size:12px;
-    letter-spacing:.06em;transition:.18s}
+  .btn{font:inherit;cursor:pointer;border-radius:0;border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 18px;font-size:12px;letter-spacing:.06em;transition:.18s}
   .btn:hover{color:var(--ink);border-color:#d8c9a8}
-  .btn.primary{background:var(--accent);color:#fdf8ef;border-color:var(--accent);font-weight:700;
-    letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 22px rgba(193,74,36,.24)}
+  .btn.primary{background:var(--accent);color:#fdf8ef;border-color:var(--accent);font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 22px rgba(193,74,36,.24)}
   .btn.primary:hover{background:var(--accent-deep);color:#fff}
   .btn:disabled{opacity:.4;cursor:not-allowed}
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:0;overflow:hidden;
-    box-shadow:0 1px 2px rgba(80,60,30,.04),0 10px 24px rgba(80,60,30,.05);
-    display:flex;flex-direction:column}
+  .card{background:#fff;border:1px solid var(--line);border-radius:0;overflow:hidden;box-shadow:0 1px 2px rgba(80,60,30,.04),0 10px 24px rgba(80,60,30,.05);display:flex;flex-direction:column;position:relative}
   .card .ph{position:relative;aspect-ratio:4/3;background:#efe6d2 center/cover no-repeat}
-  .card .rm{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:0;
-    border:none;background:rgba(30,20,10,.55);color:#fff;font-size:16px;line-height:1;cursor:pointer}
+  .card .rm{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:0;border:none;background:rgba(30,20,10,.55);color:#fff;font-size:16px;line-height:1;cursor:pointer}
   .card .rm:hover{background:var(--accent-deep)}
+  .card .st{position:absolute;left:8px;top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:#fff;background:rgba(30,20,10,.6)}
+  .card .st.ok{background:rgba(60,120,60,.85)}
+  .card .st.err{background:rgba(168,68,58,.9)}
+  .card .st.up{background:rgba(217,150,46,.92);color:#2a1c05}
   .card .body{padding:11px 12px 13px;display:flex;flex-direction:column;gap:9px}
-  .card input.cap{font:inherit;font-size:14px;border:none;border-bottom:1px solid var(--line);
-    background:transparent;padding:4px 2px;color:var(--ink)}
+  .card input.cap{font:inherit;font-size:14px;border:none;border-bottom:1px solid var(--line);background:transparent;padding:4px 2px;color:var(--ink)}
   .card input.cap::placeholder{color:#b6a68a}
   .card input.cap:focus{outline:none;border-bottom-color:var(--amber)}
-  .card select{font:inherit;font-size:12.5px;color:var(--muted);border:1px solid var(--line);
-    border-radius:0;padding:6px 8px;background:#fbf8f0}
+  .card select{font:inherit;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:0;padding:6px 8px;background:#fbf8f0}
   .empty{color:var(--muted);font-style:italic;padding:8px 2px}
-  /* toast */
-  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:#faf3e6;padding:14px 20px;border-radius:0;max-width:min(90vw,440px);
-    box-shadow:0 16px 40px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:.28s;
-    line-height:1.5;font-size:14.5px;z-index:60}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#faf3e6;padding:14px 20px;border-radius:0;max-width:min(90vw,460px);box-shadow:0 16px 40px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:.28s;line-height:1.5;font-size:14.5px;z-index:60}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .toast b{color:var(--amber)}
-  footer.studio-foot{margin-top:40px;color:var(--muted);font-size:12.5px;font-family:var(--mono);
-    letter-spacing:.04em;text-align:center}
+  /* login gate */
+  .gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:80;padding:24px}
+  .gate.hide{display:none}
+  .gate-card{max-width:380px;width:100%;text-align:center}
+  .gate .lockmark{font-family:var(--mono);font-weight:300;letter-spacing:.14em;font-size:22px;color:var(--ink)}
+  .gate .lockmark .sig{font-family:var(--hand);font-weight:600;color:var(--accent);font-size:24px;margin-left:6px}
+  .gate p{color:var(--muted);margin:10px 0 22px;line-height:1.6}
+  .gate input{font:inherit;width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:0;background:#fff;color:var(--ink);text-align:center;letter-spacing:.04em}
+  .gate input:focus{outline:none;border-color:var(--amber)}
+  .gate .go{margin-top:14px;width:100%;padding:13px;border-radius:0;border:0;background:var(--accent);color:#fdf8ef;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:13px;cursor:pointer}
+  .gate .go:hover{background:var(--accent-deep)}
+  .gate .err{color:var(--accent);font-size:13px;min-height:18px;margin-top:12px}
+  footer.studio-foot{margin-top:44px;color:var(--muted);font-size:12.5px;font-family:var(--mono);letter-spacing:.04em;text-align:center}
 </style>
 </head>
 <body>
+
+<!-- LOGIN GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="lockmark">The Light Lair<span class="sig">studio</span></div>
+    <p>Enter your studio passphrase to add or manage photographs.</p>
+    <input id="pass" type="password" placeholder="passphrase" autocomplete="current-password" inputmode="text">
+    <button class="go" id="unlock">Unlock studio</button>
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
+
 <div class="studio-wrap">
   <div class="studio-top">
     <span class="brand">The Light Lair<span class="sig">studio</span></span>
     <span class="spacer"></span>
-    <span class="pill demo">Demo</span>
     <a class="back" href="index.html">← view the site</a>
+    <button class="link" id="logout">lock</button>
   </div>
 
   <h1 class="studio-h">Add photographs</h1>
-  <p class="studio-sub">Drop new work straight from your phone or desktop. No logins to remember,
-    no resizing, no file names — just the photo.</p>
+  <p class="studio-sub">Drop new work straight from your phone or desktop. No resizing, no file names — just the photo. It publishes to your live site.</p>
 
   <div class="note">
     <span>✨</span>
-    <span><b>Preview mode.</b> Photos you add here appear instantly below so you can see how they'll
-      sit on the site — but this demo doesn't save them yet. The published version stores every drop
-      to <b>your</b> Light Lair automatically, and they go live on refresh.</span>
+    <span><b>Live.</b> Photos are resized on your device, stored to your Light Lair, and appear on the site within a few seconds of a refresh. Remove any photo with the ✕ — it comes off the site too.</span>
   </div>
 
   <label class="drop" id="drop">
@@ -114,79 +110,153 @@
   </label>
 
   <div class="tray-head">
-    <h2>Ready to publish</h2>
+    <h2>Queue</h2>
     <span class="count" id="count">0 photos</span>
     <span class="spacer"></span>
-    <button class="btn" id="clear" disabled>Clear all</button>
+    <button class="btn" id="clear" disabled>Clear queue</button>
     <button class="btn primary" id="publish" disabled>Publish to The Light Lair</button>
   </div>
-  <div id="cards" class="cards"><div class="empty" id="empty">Nothing added yet — drop a few photos above.</div></div>
+  <div id="cards" class="cards"><div class="empty" id="empty">Nothing queued — drop a few photos above.</div></div>
 
-  <footer class="studio-foot">The Light Lair · studio · demo build</footer>
+  <footer class="studio-foot">The Light Lair · studio</footer>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  const drop=document.getElementById('drop'), file=document.getElementById('file');
-  const cards=document.getElementById('cards'), empty=document.getElementById('empty');
-  const countEl=document.getElementById('count'), toast=document.getElementById('toast');
-  const clearBtn=document.getElementById('clear'), pubBtn=document.getElementById('publish');
+  const API='https://lightlair.sosatech.workers.dev';
+  const KEY='ll_studio_key';
+  const $=id=>document.getElementById(id);
+  const gate=$('gate'), passEl=$('pass'), gerr=$('gerr');
+  const drop=$('drop'), file=$('file'), cards=$('cards'), empty=$('empty');
+  const countEl=$('count'), toast=$('toast'), clearBtn=$('clear'), pubBtn=$('publish');
   const cats=['Streets','Nature','Details','Home'];
+  let key=localStorage.getItem(KEY)||'';
   let items=[];
 
   function fmt(n){return n+' photo'+(n===1?'':'s');}
+  function showToast(html,ms){toast.innerHTML=html;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),ms||3800);}
   function refresh(){
     countEl.textContent=fmt(items.length);
     empty.style.display=items.length?'none':'';
-    clearBtn.disabled=pubBtn.disabled=!items.length;
+    const pending=items.filter(i=>i.status!=='ok').length;
+    clearBtn.disabled=!items.length;
+    pubBtn.disabled=!pending;
   }
-  function showToast(html,ms){toast.innerHTML=html;toast.classList.add('show');
-    clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),ms||3600);}
 
+  /* ---------- auth ---------- */
+  async function verify(k){
+    try{const r=await fetch(API+'/auth',{method:'POST',headers:{Authorization:'Bearer '+k}});return r.ok;}catch(e){return false;}
+  }
+  async function unlock(){
+    const k=passEl.value.trim(); if(!k){gerr.textContent='Enter your passphrase.';return;}
+    gerr.textContent='Checking…';
+    if(await verify(k)){ key=k; localStorage.setItem(KEY,k); gate.classList.add('hide'); passEl.value=''; gerr.textContent=''; }
+    else gerr.textContent='That passphrase didn’t work.';
+  }
+  $('unlock').onclick=unlock;
+  passEl.addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+  $('logout').onclick=()=>{localStorage.removeItem(KEY);key='';gate.classList.remove('hide');};
+
+  /* ---------- image decode + resize (on-device) ---------- */
+  async function decode(f){
+    if('createImageBitmap' in window){
+      try{ const bmp=await createImageBitmap(f,{imageOrientation:'from-image'}); return {src:bmp,w:bmp.width,h:bmp.height}; }catch(e){}
+    }
+    return await new Promise((res,rej)=>{
+      const url=URL.createObjectURL(f), img=new Image();
+      img.onload=()=>{res({src:img,w:img.naturalWidth,h:img.naturalHeight,url});};
+      img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('decode'));};
+      img.src=url;
+    });
+  }
+  function toJpeg(src,sw,sh,maxEdge,q){
+    const scale=Math.min(1,maxEdge/Math.max(sw,sh));
+    const w=Math.max(1,Math.round(sw*scale)), h=Math.max(1,Math.round(sh*scale));
+    const c=document.createElement('canvas'); c.width=w; c.height=h;
+    c.getContext('2d').drawImage(src,0,0,w,h);
+    return new Promise(res=>c.toBlob(b=>res({blob:b,w,h}),'image/jpeg',q));
+  }
+
+  /* ---------- queue cards ---------- */
   function addFiles(list){
-    const imgs=[...list].filter(f=>f.type.startsWith('image/'));
-    if(!imgs.length){showToast("Those didn't look like photos — try image files.");return;}
+    const imgs=[...list].filter(f=>/^image\//.test(f.type)||/\.hei[cf]$/i.test(f.name));
+    if(!imgs.length){showToast('Those didn’t look like photos — try image files.');return;}
     imgs.forEach(f=>{
-      const url=URL.createObjectURL(f);
-      const item={url,name:f.name,cap:'',cat:cats[1]};
+      const item={file:f,cap:'',cat:cats[1],status:'new',id:null};
       items.push(item);
       const card=document.createElement('div');card.className='card';
-      const options=cats.map(c=>'<option'+(c===item.cat?' selected':'')+'>'+c+'</option>').join('');
-      card.innerHTML=
-        '<div class="ph" style="background-image:url('+url+')">'+
-          '<button class="rm" title="Remove">×</button></div>'+
-        '<div class="body">'+
-          '<input class="cap" placeholder="Add a caption…" maxlength="90">'+
-          '<select>'+options+'</select>'+
-        '</div>';
-      card.querySelector('.rm').onclick=()=>{items=items.filter(x=>x!==item);
-        URL.revokeObjectURL(url);card.remove();refresh();};
+      const opts=cats.map(c=>'<option'+(c===item.cat?' selected':'')+'>'+c+'</option>').join('');
+      card.innerHTML='<div class="ph"><span class="st">reading…</span><button class="rm" title="Remove">×</button></div>'+
+        '<div class="body"><input class="cap" placeholder="Add a caption…" maxlength="120"><select>'+opts+'</select></div>';
+      item.card=card; item.stEl=card.querySelector('.st'); item.phEl=card.querySelector('.ph');
+      card.querySelector('.rm').onclick=()=>removeItem(item);
       card.querySelector('.cap').oninput=e=>item.cap=e.target.value;
       card.querySelector('select').onchange=e=>item.cat=e.target.value;
       cards.appendChild(card);
+      // decode preview + prep resized blobs
+      decode(f).then(async d=>{
+        const [web,thumb]=await Promise.all([toJpeg(d.src,d.w,d.h,2000,.85),toJpeg(d.src,d.w,d.h,700,.82)]);
+        item.web=web.blob; item.thumb=thumb.blob; item.tw=thumb.w; item.th=thumb.h;
+        item.phEl.style.backgroundImage='url('+URL.createObjectURL(thumb.blob)+')';
+        item.status='ready'; setSt(item,'ready','');
+        if(d.url)URL.revokeObjectURL(d.url);
+        refresh();
+      }).catch(()=>{ item.status='badfile'; setSt(item,'err','can’t read (HEIC?)'); refresh(); });
     });
     refresh();
-    showToast('Added <b>'+fmt(imgs.length)+'</b> — captions optional. In the live version, hitting Publish sends them straight to your site.');
+  }
+  function setSt(item,cls,txt){ item.stEl.className='st'+(cls?' '+cls:''); item.stEl.textContent=txt||({new:'reading…',ready:'ready',up:'uploading…',ok:'on the site'}[item.status]||''); if(cls==='ok')item.stEl.classList.add('ok'); }
+  function removeItem(item){
+    if(item.status==='ok'&&item.id){ // already published -> delete from site
+      if(!confirm('Remove this photo from the live site?'))return;
+      fetch(API+'/delete',{method:'POST',headers:{Authorization:'Bearer '+key,'content-type':'application/json'},body:JSON.stringify({id:item.id})})
+        .then(r=>{if(!r.ok)throw 0;}).catch(()=>showToast('Could not remove it — try again.'));
+    }
+    items=items.filter(x=>x!==item); item.card.remove(); refresh();
   }
 
-  drop.addEventListener('click',e=>{ if(e.target.tagName!=='INPUT') file.click(); });
+  /* ---------- publish ---------- */
+  async function uploadItem(item){
+    if(item.status==='ok'||!item.web||!item.thumb)return;
+    item.status='up'; setSt(item,'up','uploading…');
+    const fd=new FormData();
+    fd.append('web',item.web,'web.jpg'); fd.append('thumb',item.thumb,'thumb.jpg');
+    fd.append('cat',item.cat.toLowerCase()); fd.append('cap',item.cap);
+    fd.append('w',item.tw); fd.append('h',item.th);
+    try{
+      const r=await fetch(API+'/upload',{method:'POST',headers:{Authorization:'Bearer '+key},body:fd});
+      if(r.status===401){throw new Error('auth');}
+      if(!r.ok)throw new Error('http'+r.status);
+      const entry=await r.json(); item.id=entry.id; item.status='ok'; setSt(item,'ok','on the site');
+    }catch(e){ item.status='ready'; setSt(item,'err',e.message==='auth'?'locked out':'failed — retry'); if(e.message==='auth'){localStorage.removeItem(KEY);key='';gate.classList.remove('hide');} }
+    refresh();
+  }
+  pubBtn.onclick=async()=>{
+    const queue=items.filter(i=>i.status==='ready'); if(!queue.length)return;
+    pubBtn.disabled=true;
+    for(const it of queue){ await uploadItem(it); }
+    const done=items.filter(i=>i.status==='ok').length;
+    showToast('🎉 <b>'+fmt(items.filter(i=>i.status==='ok').length)+'</b> now on the site. Refresh The Light Lair to see them.');
+    refresh();
+  };
+  clearBtn.onclick=()=>{ items=items.filter(i=>i.status==='ok'); cards.querySelectorAll('.card').forEach((c,i)=>{}); rebuild(); };
+  function rebuild(){ cards.innerHTML=''; if(!items.length){cards.appendChild(empty);} items.forEach(it=>cards.appendChild(it.card)); refresh(); }
+
+  /* ---------- dropzone ---------- */
+  drop.addEventListener('click',e=>{ if(e.target.tagName!=='INPUT')file.click(); });
   file.addEventListener('change',e=>{addFiles(e.target.files);file.value='';});
   ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
-  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();
-    if(ev==='dragleave'&&drop.contains(e.relatedTarget))return;drop.classList.remove('drag');}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();if(ev==='dragleave'&&drop.contains(e.relatedTarget))return;drop.classList.remove('drag');}));
   drop.addEventListener('drop',e=>{if(e.dataTransfer&&e.dataTransfer.files)addFiles(e.dataTransfer.files);});
 
-  clearBtn.onclick=()=>{items.forEach(i=>URL.revokeObjectURL(i.url));items=[];
-    cards.innerHTML='<div class="empty" id="empty">Nothing added yet — drop a few photos above.</div>';
-    // re-grab empty ref
-    window.setTimeout(()=>{},0);refreshEmpty();};
-  function refreshEmpty(){const e=document.querySelector('#cards .empty');if(e)e.style.display='';countEl.textContent=fmt(0);clearBtn.disabled=pubBtn.disabled=true;}
-  pubBtn.onclick=()=>showToast('🎉 In the live Light Lair, your <b>'+fmt(items.length)+
-    '</b> would publish now and appear on the site instantly. This is a demo — nothing was saved.',5200);
-
-  refresh();
+  /* ---------- boot ---------- */
+  (async function(){
+    if(key && await verify(key)){ gate.classList.add('hide'); }
+    else { localStorage.removeItem(KEY); key=''; gate.classList.remove('hide'); }
+    refresh();
+  })();
 })();
 </script>
 </body>

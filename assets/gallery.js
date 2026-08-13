@@ -3,7 +3,7 @@
 // window.LIGHTLAIR_MANIFEST twin so file:// preview works too.
 // Phase 2 swaps MANIFEST_URL for the R2/Worker endpoint — nothing else changes.
 (function () {
-  const MANIFEST_URL = 'assets/gallery.json?v=1';
+  const MANIFEST_URL = 'https://lightlair.sosatech.workers.dev/gallery.json';
   const grid = document.getElementById('grid');
 
   function loadManifest() {
