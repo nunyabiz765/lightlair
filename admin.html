@@ -197,7 +197,7 @@
       cards.appendChild(card);
       // decode preview + prep resized blobs
       decode(f).then(async d=>{
-        const [web,thumb]=await Promise.all([toJpeg(d.src,d.w,d.h,2000,.85),toJpeg(d.src,d.w,d.h,700,.82)]);
+        const [web,thumb]=await Promise.all([toJpeg(d.src,d.w,d.h,2000,.85),toJpeg(d.src,d.w,d.h,1100,.92)]);
         item.web=web.blob; item.thumb=thumb.blob; item.tw=thumb.w; item.th=thumb.h;
         item.phEl.style.backgroundImage='url('+URL.createObjectURL(thumb.blob)+')';
         item.status='ready'; setSt(item,'ready','');
